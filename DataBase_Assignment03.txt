@@ -1,0 +1,375 @@
+﻿CREATE DATABASE Assignment3;
+Query OK, 1 row affected (0.08 sec)
+
+mysql> USE Assignment3;
+Database changed
+
+Question 1: Table Creation
+
+Create a database and a table named Employees with the following columns:
+
+EmpID (Primary Key, Integer)
+
+Name (VARCHAR, Not Null)
+
+Age (Integer)
+
+Department (VARCHAR)
+
+Salary (Decimal)
+
+JoiningDate (DATE)
+
+City (VARCHAR)
+
+
+Hint: Use the CREATE TABLE statement with appropriate data types and constraints.
+
+mysql> CREATE TABLE Employee(Empid int primary key,Name varchar(55) not null,Age INT,Department varchar(55),Salary DECIMAL(10,2),JoiningDate DATE,City varchar(55));
+Query OK, 0 rows affected (0.07 sec)
+
+Question 2: Insert at least 10 records into the Employees table with sample data.
+Hint: Use the INSERT INTO statement.
+
+
+mysql> INSERT INTO Employee VALUES(1,'Anita',23,'MCS',10000.50,'2003-03-23','Indapur');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Employee VALUES(2,'Sonali',24,'BCS',8000.50,'2003-03-24','Pune');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Employee VALUES(3,'Neha',24,'BCOM',9000.50,'2003-03-24','Nashik');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO Employee VALUES(4,'Radha',25,'MCOM',9000.40,'2014-04-24','Pune');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Employee VALUES(5,'Seema',25,'bsc',9000.30,'2014-05-24','Katraj');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Employee VALUES(6,'Sandhya',25,'MSC',1000.30,'2014-06-24','Mumbai');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Employee VALUES(7,'Vishal',23,'BA',1000.30,'2014-07-24','Indapur');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Employee VALUES(8,'Amit',23,'IT',1000.70,'2015-08-24','Pune');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO Employee VALUES(9,'Snehal',28,'BA',1000.60,'2015-08-24','Pune');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Employee VALUES(10,'Sandesh',24,'Engineer',1000.50,'2015-08-24','Pune');
+Query OK, 1 row affected (0.01 sec)
+
+Question 3: Write an SQL query to display all the records from the Employees table.
+Hint: Use the SELECT * statement.
+
+
+mysql> SELECT * FROM Employee;
++-------+---------+------+------------+----------+-------------+---------+
+| Empid | Name    | Age  | Department | Salary   | JoiningDate | City    |
++-------+---------+------+------------+----------+-------------+---------+
+|     1 | Anita   |   23 | MCS        | 10000.50 | 2003-03-23  | Indapur |
+|     2 | Sonali  |   24 | BCS        |  8000.50 | 2003-03-24  | Pune    |
+|     3 | Neha    |   24 | BCOM       |  9000.50 | 2003-03-24  | Nashik  |
+|     4 | Radha   |   25 | MCOM       |  9000.40 | 2014-04-24  | Pune    |
+|     5 | Seema   |   25 | bsc        |  9000.30 | 2014-05-24  | Katraj  |
+|     6 | Sandhya |   25 | MSC        |  1000.30 | 2014-06-24  | Mumbai  |
+|     7 | Vishal  |   23 | BA         |  1000.30 | 2014-07-24  | Indapur |
+|     8 | Amit    |   23 | IT         |  1000.70 | 2015-08-24  | Pune    |
+|     9 | Snehal  |   28 | BA         |  1000.60 | 2015-08-24  | Pune    |
+|    10 | Sandesh |   24 | Engineer   |  1000.50 | 2015-08-24  | Pune    |
++-------+---------+------+------------+----------+-------------+---------+
+10 rows in set (0.00 sec)
+
+Question 4: Display only the Name, Department, and Salary of all employees.
+Hint: Select specific columns using SELECT followed by column names.
+
+
+mysql> SELECT Name,Department,Salary from Employee;
++---------+------------+----------+
+| Name    | Department | Salary   |
++---------+------------+----------+
+| Anita   | MCS        | 10000.50 |
+| Sonali  | BCS        |  8000.50 |
+| Neha    | BCOM       |  9000.50 |
+| Radha   | MCOM       |  9000.40 |
+| Seema   | bsc        |  9000.30 |
+| Sandhya | MSC        |  1000.30 |
+| Vishal  | BA         |  1000.30 |
+| Amit    | IT         |  1000.70 |
+| Snehal  | BA         |  1000.60 |
+| Sandesh | Engineer   |  1000.50 |
++---------+------------+----------+
+10 rows in set (0.00 sec)
+
+Question 5: Display the records of employees who earn a salary greater than ₹50,000.
+Hint: Use the WHERE clause with the > operator.
+
+mysql> SELECT * FROM Employee where salary>50000;
+Empty set (0.01 sec)
+
+Question 6: Display the employees who belong to the IT department.
+Hint: Use the WHERE clause with string comparison.
+
+mysql> SELECT * FROM Employee where Department = 'IT';
++-------+------+------+------------+---------+-------------+------+
+| Empid | Name | Age  | Department | Salary  | JoiningDate | City |
++-------+------+------+------------+---------+-------------+------+
+|     8 | Amit |   23 | IT         | 1000.70 | 2015-08-24  | Pune |
++-------+------+------+------------+---------+-------------+------+
+1 row in set (0.01 sec)
+
+Question 7: Display employees whose age is between 25 and 35.
+Hint: Use the BETWEEN keyword.
+
+
+mysql> SELECT * FROM Employee where Age BETWEEN 25 AND 35;
++-------+---------+------+------------+---------+-------------+--------+
+| Empid | Name    | Age  | Department | Salary  | JoiningDate | City   |
++-------+---------+------+------------+---------+-------------+--------+
+|     4 | Radha   |   25 | MCOM       | 9000.40 | 2014-04-24  | Pune   |
+|     5 | Seema   |   25 | bsc        | 9000.30 | 2014-05-24  | Katraj |
+|     6 | Sandhya |   25 | MSC        | 1000.30 | 2014-06-24  | Mumbai |
+|     9 | Snehal  |   28 | BA         | 1000.60 | 2015-08-24  | Pune   |
++-------+---------+------+------------+---------+-------------+--------+
+4 rows in set (0.01 sec)
+
+Question 8: Display the employees who joined the company after 1st January 2022.
+Hint: Use the WHERE clause with the > operator and DATE format.
+
+mysql> SELECT * FROM Employee where JoiningDate>'2022-01-01';
+Empty set (0.01 sec)
+
+mysql> SELECT * FROM Employee where JoiningDate<'2022-01-01';
++-------+---------+------+------------+----------+-------------+---------+
+| Empid | Name    | Age  | Department | Salary   | JoiningDate | City    |
++-------+---------+------+------------+----------+-------------+---------+
+|     1 | Anita   |   23 | MCS        | 10000.50 | 2003-03-23  | Indapur |
+|     2 | Sonali  |   24 | BCS        |  8000.50 | 2003-03-24  | Pune    |
+|     3 | Neha    |   24 | BCOM       |  9000.50 | 2003-03-24  | Nashik  |
+|     4 | Radha   |   25 | MCOM       |  9000.40 | 2014-04-24  | Pune    |
+|     5 | Seema   |   25 | bsc        |  9000.30 | 2014-05-24  | Katraj  |
+|     6 | Sandhya |   25 | MSC        |  1000.30 | 2014-06-24  | Mumbai  |
+|     7 | Vishal  |   23 | BA         |  1000.30 | 2014-07-24  | Indapur |
+|     8 | Amit    |   23 | IT         |  1000.70 | 2015-08-24  | Pune    |
+|     9 | Snehal  |   28 | BA         |  1000.60 | 2015-08-24  | Pune    |
+|    10 | Sandesh |   24 | Engineer   |  1000.50 | 2015-08-24  | Pune    |
++-------+---------+------+------------+----------+-------------+---------+
+10 rows in set (0.00 sec)
+
+Question 9: Display the employees from the Mumbai or Pune city.
+Hint: Use the IN operator.
+
+
+mysql> SELECT * FROM Employee where City IN ('Mumbai','Pune');
++-------+---------+------+------------+---------+-------------+--------+
+| Empid | Name    | Age  | Department | Salary  | JoiningDate | City   |
++-------+---------+------+------------+---------+-------------+--------+
+|     2 | Sonali  |   24 | BCS        | 8000.50 | 2003-03-24  | Pune   |
+|     4 | Radha   |   25 | MCOM       | 9000.40 | 2014-04-24  | Pune   |
+|     6 | Sandhya |   25 | MSC        | 1000.30 | 2014-06-24  | Mumbai |
+|     8 | Amit    |   23 | IT         | 1000.70 | 2015-08-24  | Pune   |
+|     9 | Snehal  |   28 | BA         | 1000.60 | 2015-08-24  | Pune   |
+|    10 | Sandesh |   24 | Engineer   | 1000.50 | 2015-08-24  | Pune   |
++-------+---------+------+------------+---------+-------------+--------+
+6 rows in set (0.00 sec)
+
+Question 10: Display the total number of employees in each Department.
+Hint: Use GROUP BY with COUNT().
+
+mysql> select Department,count(*) as TotalEmployee from Employee group by Department;
++------------+---------------+
+| Department | TotalEmployee |
++------------+---------------+
+| MCS        |             1 |
+| BCS        |             1 |
+| BCOM       |             1 |
+| MCOM       |             1 |
+| bsc        |             1 |
+| MSC        |             1 |
+| BA         |             2 |
+| IT         |             1 |
+| Engineer   |             1 |
++------------+---------------+
+9 rows in set (0.00 sec)
+
+Question 11: Display the average salary of employees in each Department.
+Hint: Use AVG() with GROUP BY.
+
+
+mysql> select Salary,count(*) as AvgSalary from Employee group by Salary;
++----------+-----------+
+| Salary   | AvgSalary |
++----------+-----------+
+| 10000.50 |         1 |
+|  8000.50 |         1 |
+|  9000.50 |         1 |
+|  9000.40 |         1 |
+|  9000.30 |         1 |
+|  1000.30 |         2 |
+|  1000.70 |         1 |
+|  1000.60 |         1 |
+|  1000.50 |         1 |
++----------+-----------+
+9 rows in set (0.00 sec)
+
+Question 12: Display the employee with the highest salary.
+Hint: Use the MAX() function.
+
+
+mysql> select MAX(Salary) from Employee;
++-------------+
+| MAX(Salary) |
++-------------+
+|    10000.50 |
++-------------+
+1 row in set (0.00 sec)
+
+Question 13: Display the top 3 highest-paid employees.
+Hint: Use ORDER BY with LIMIT.
+
+
+mysql> SELECT * FROM Employee ORDER BY Salary DESC limit 3;
++-------+-------+------+------------+----------+-------------+---------+
+| Empid | Name  | Age  | Department | Salary   | JoiningDate | City    |
++-------+-------+------+------------+----------+-------------+---------+
+|     1 | Anita |   23 | MCS        | 10000.50 | 2003-03-23  | Indapur |
+|     3 | Neha  |   24 | BCOM       |  9000.50 | 2003-03-24  | Nashik  |
+|     4 | Radha |   25 | MCOM       |  9000.40 | 2014-04-24  | Pune    |
++-------+-------+------+------------+----------+-------------+---------+
+3 rows in set (0.00 sec)
+
+Question 14: Display employees sorted in ascending order by Name and descending order by Salary.
+Hint: Use ORDER BY with multiple conditions.
+
+mysql> SELECT * FROM Employee ORDER BY Name ASC,Salary DESC;
++-------+---------+------+------------+----------+-------------+---------+
+| Empid | Name    | Age  | Department | Salary   | JoiningDate | City    |
++-------+---------+------+------------+----------+-------------+---------+
+|     8 | Amit    |   23 | IT         |  1000.70 | 2015-08-24  | Pune    |
+|     1 | Anita   |   23 | MCS        | 10000.50 | 2003-03-23  | Indapur |
+|     3 | Neha    |   24 | BCOM       |  9000.50 | 2003-03-24  | Nashik  |
+|     4 | Radha   |   25 | MCOM       |  9000.40 | 2014-04-24  | Pune    |
+|    10 | Sandesh |   24 | Engineer   |  1000.50 | 2015-08-24  | Pune    |
+|     6 | Sandhya |   25 | MSC        |  1000.30 | 2014-06-24  | Mumbai  |
+|     5 | Seema   |   25 | bsc        |  9000.30 | 2014-05-24  | Katraj  |
+|     9 | Snehal  |   28 | BA         |  1000.60 | 2015-08-24  | Pune    |
+|     2 | Sonali  |   24 | BCS        |  8000.50 | 2003-03-24  | Pune    |
+|     7 | Vishal  |   23 | BA         |  1000.30 | 2014-07-24  | Indapur |
++-------+---------+------+------------+----------+-------------+---------+
+10 rows in set (0.00 sec)
+
+Question 15: Update the salary of employees in the IT department by increasing it by 10%.
+Hint: Use the UPDATE statement with the WHERE clause and salary calculation.
+
+mysql> update Employee set Salary =Salary * 1.10 where Department='IT';
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM Employee;
++-------+---------+------+------------+----------+-------------+---------+
+| Empid | Name    | Age  | Department | Salary   | JoiningDate | City    |
++-------+---------+------+------------+----------+-------------+---------+
+|     1 | Anita   |   23 | MCS        | 10000.50 | 2003-03-23  | Indapur |
+|     2 | Sonali  |   24 | BCS        |  8000.50 | 2003-03-24  | Pune    |
+|     3 | Neha    |   24 | BCOM       |  9000.50 | 2003-03-24  | Nashik  |
+|     4 | Radha   |   25 | MCOM       |  9000.40 | 2014-04-24  | Pune    |
+|     5 | Seema   |   25 | bsc        |  9000.30 | 2014-05-24  | Katraj  |
+|     6 | Sandhya |   25 | MSC        |  1000.30 | 2014-06-24  | Mumbai  |
+|     7 | Vishal  |   23 | BA         |  1000.30 | 2014-07-24  | Indapur |
+|     8 | Amit    |   23 | IT         |  1100.77 | 2015-08-24  | Pune    |
+|     9 | Snehal  |   28 | BA         |  1000.60 | 2015-08-24  | Pune    |
+|    10 | Sandesh |   24 | Engineer   |  1000.50 | 2015-08-24  | Pune    |
++-------+---------+------+------------+----------+-------------+---------+
+10 rows in set (0.00 sec)
+
+Question 16: Delete employees who belong to the HR department.
+Hint: Use the DELETE statement with the WHERE clause.
+
+mysql> DELETE FROM Employee WHERE Department = 'HR';
+Query OK, 0 rows affected (0.00 sec)
+
+Question 17: Create a new table called Projects with the following columns:
+
+ProjectID (Primary Key)
+
+ProjectName (VARCHAR)
+
+EmpID (Foreign Key linked to the Employees table)
+
+StartDate (DATE)
+
+EndDate (DATE)
+
+
+Hint: Use CREATE TABLE with FOREIGN KEY.
+
+mysql> CREATE TABLE Projects(ProjectID int primary key,ProjectName varchar(100),EmpID INT,StartDate DATE,EndDate DATE,FOREIGN KEY(EmpID)REFERENCES Employee(EmpID));
+Query OK, 0 rows affected (0.13 sec)
+
+Question 18: Insert sample data into the Projects table and display all projects assigned to employees.
+Hint: Use INSERT INTO and SELECT statements.
+
+mysql> INSERT INTO Projects VALUES(101,'Web Redesign',3,'2024-01-15','2024-06-30');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO Projects VALUES(102,'Financial Audit',2,'2024-02-01','2024-04-15');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Projects VALUES(103,'Marketing Campaign',4,'2024-03-10','2024-07-20');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO Projects VALUES(104,'Backend System Upgrade',3,'2024-05-01','2024-09-01');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Projects VALUES(105,'New Branch Setup',5,'2024-04-05','2024-10-10');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from Projects;
++-----------+------------------------+-------+------------+------------+
+| ProjectID | ProjectName            | EmpID | StartDate  | EndDate    |
++-----------+------------------------+-------+------------+------------+
+|       101 | Web Redesign           |     3 | 2024-01-15 | 2024-06-30 |
+|       102 | Financial Audit        |     2 | 2024-02-01 | 2024-04-15 |
+|       103 | Marketing Campaign     |     4 | 2024-03-10 | 2024-07-20 |
+|       104 | Backend System Upgrade |     3 | 2024-05-01 | 2024-09-01 |
+|       105 | New Branch Setup       |     5 | 2024-04-05 | 2024-10-10 |
++-----------+------------------------+-------+------------+------------+
+5 rows in set (0.00 sec)
+
+Question 19: Display the list of employees who are working on a project that started after 1st January 2023.
+Hint: Use INNER JOIN between Employees and Projects tables.
+
+mysql> SELECT E.EmpID,E.Name,E.Department,P.ProjectName,P.StartDate FROM Employee E INNER JOIN Projects P ON E.EmpID = P.EmpID WHERE P.StartDate > '2023-01-01';
++-------+--------+------------+------------------------+------------+
+| EmpID | Name   | Department | ProjectName            | StartDate  |
++-------+--------+------------+------------------------+------------+
+|     3 | Neha   | BCOM       | Web Redesign           | 2024-01-15 |
+|     2 | Sonali | BCS        | Financial Audit        | 2024-02-01 |
+|     4 | Radha  | MCOM       | Marketing Campaign     | 2024-03-10 |
+|     3 | Neha   | BCOM       | Backend System Upgrade | 2024-05-01 |
+|     5 | Seema  | bsc        | New Branch Setup       | 2024-04-05 |
++-------+--------+------------+------------------------+------------+
+5 rows in set (0.01 sec)
+
+Question 20: Display employees who are not assigned to any project.
+Hint: Use LEFT JOIN with NULL condition.
+
+mysql> SELECT E.EmpID, E.Name,E.Department,E.City FROM Employee E LEFT JOIN Projects P ON E.EmpID = P.EmpID WHERE P.ProjectID IS NULL;
++-------+---------+------------+---------+
+| EmpID | Name    | Department | City    |
++-------+---------+------------+---------+
+|     1 | Anita   | MCS        | Indapur |
+|     6 | Sandhya | MSC        | Mumbai  |
+|     7 | Vishal  | BA         | Indapur |
+|     8 | Amit    | IT         | Pune    |
+|     9 | Snehal  | BA         | Pune    |
+|    10 | Sandesh | Engineer   | Pune    |
++-------+---------+------------+---------+
+6 rows in set (0.00 sec)
+
+mysql>
+
+
